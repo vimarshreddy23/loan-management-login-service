@@ -20,11 +20,11 @@ public class LoanManagementLoginService {
 	private UserDetailsRepository userDetailsRepository;
 
 	public ResponseEntity<?> check(UserDetails userDetails) {
-		log.info("Validating Login Credentials");
-		UserDetails udetails = userDetailsRepository.findByuserNameAnduserPassword(userDetails.getUserName(),
+		log.info("-->>>Validating Login Credentials<<<--");
+		UserDetails udetails = userDetailsRepository.findByuserNameAnduserPassword(userDetails.getUserEmail(),
 				userDetails.getUserPassword());
-		if(Optional.of(udetails).isPresent())
-			return new ResponseEntity<>(HttpStatus.ACCEPTED);
-		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		if(null != udetails && Optional.of(udetails).isPresent())
+			return new ResponseEntity<>(udetails,HttpStatus.ACCEPTED);
+		return new ResponseEntity<>("Invalid User Credentails", HttpStatus.FORBIDDEN);
 	}
 }

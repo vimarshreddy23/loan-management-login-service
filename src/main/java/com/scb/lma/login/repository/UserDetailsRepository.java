@@ -10,8 +10,8 @@ import com.scb.lma.login.model.UserDetails;
 @Repository
 public interface UserDetailsRepository extends JpaRepository<UserDetails, Long> {
 
-	@Query("select e FROM UserDetails e WHERE e.userName =(:userName) and e.userPassword=(:userPassword)")
-	UserDetails findByuserNameAnduserPassword(@Param("userName") String userName,
+	@Query("select e FROM UserDetails e WHERE e.userEmail =(:userEmail) and e.userPassword=(:userPassword)")
+	UserDetails findByuserNameAnduserPassword(@Param("userEmail") String userEmail,
 			@Param("userPassword") String userPassword);
 
 }
