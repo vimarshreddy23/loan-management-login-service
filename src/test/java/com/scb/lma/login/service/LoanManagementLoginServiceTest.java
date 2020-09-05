@@ -36,7 +36,7 @@ public class LoanManagementLoginServiceTest {
 	
 	private ObjectMapper mapper = new ObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL);
 	
-	private static final String USER_DETAILS = "src/test/java/data/userDetailsRequest.json";
+	private static final String USER_DETAILS = "src/test/resources/data/userDetailsRequest.json";
 	
 
 	@Before
