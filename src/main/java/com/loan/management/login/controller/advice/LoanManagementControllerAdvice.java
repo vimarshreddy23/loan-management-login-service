@@ -1,4 +1,4 @@
-package com.scb.lma.login.controller.advice;
+package com.loan.management.login.controller.advice;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@RestControllerAdvice(basePackages = {"com.scb.lma.login"})
+@RestControllerAdvice(basePackages = {"com.*"})
 public class LoanManagementControllerAdvice {
 
 	@ExceptionHandler(RuntimeException.class)

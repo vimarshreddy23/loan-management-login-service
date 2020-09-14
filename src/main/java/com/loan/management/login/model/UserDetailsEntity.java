@@ -1,4 +1,4 @@
-package com.scb.lma.login.model;
+package com.loan.management.login.model;
 
 import java.util.Date;
 
@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -24,7 +25,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "user_details")
 @EntityListeners(AuditingEntityListener.class)
-public class UserDetails {
+public class UserDetailsEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,6 +37,10 @@ public class UserDetails {
 
 	@Column(name = "user_email")
 	private String userEmail;
+	
+	/*
+	 * @Transient private String userPassword;
+	 */
 
 	@Column(name = "user_password")
 	private String userPassword;

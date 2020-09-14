@@ -2,10 +2,12 @@ package com.scb.lma.login;
 
 import org.junit.jupiter.api.Test;
 
+import com.loan.management.LoanManagementAuthenticationApp;
+
 public class LoanManagementAppTests {
 
 	@Test
 	public void main() {
-		LoanManagementApp.main(new String[] {});
+		LoanManagementAuthenticationApp.main(new String[] {});
 	}
 }
