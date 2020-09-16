@@ -162,5 +162,6 @@
 				</executions>
 			</plugin>
 		</plugins>
+		<finalName>loan-management-login-service</finalName>
 	</build>
 </project>
