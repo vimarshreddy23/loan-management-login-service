@@ -1,11 +1,9 @@
 # select parent image
-FROM maven:3.5-jdk-8-alpine
+FROM openjdk:8
  
-# copy the source tree and the pom.xml to our new container
-COPY ./ ./
- 
-# package our application code
-RUN mvn clean package
- 
+EXPOSE 8087
+
+ADD target/loan-management-login-service.jar loan-management-login-service.jar
+
 # set the startup command to execute the jar
-CMD ["java", "-jar", "target/loan-management-login-service.jar"]
+ENTRYPOINT ["java", "-jar", "loan-management-login-service.jar"]
