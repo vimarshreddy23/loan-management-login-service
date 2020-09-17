@@ -26,7 +26,9 @@ public class JPAUserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
 		Optional<UserDetailsEntity> user = userRepository.findByUserEmail(userEmail);
-		user.orElseThrow(() -> new UsernameNotFoundException("Not found: " + userEmail));
+		if(!user.isPresent()) {
+			throw new UsernameNotFoundException("Not found: " + userEmail);
+		}
 		return user.map(CustomUserDetails::new).get();
 		
 	}
