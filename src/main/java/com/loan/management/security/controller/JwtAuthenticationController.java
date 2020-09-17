@@ -13,7 +13,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.loan.management.security.model.AuthenticationRequest;
@@ -21,9 +20,11 @@ import com.loan.management.security.model.AuthenticationResponse;
 import com.loan.management.security.model.CustomUserDetails;
 import com.loan.management.security.service.JPAUserDetailsService;
 import com.loan.management.security.util.JwtUtil;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
+
 public class JwtAuthenticationController {
 
 	@Autowired
@@ -35,10 +36,11 @@ public class JwtAuthenticationController {
 	@Autowired
 	private JPAUserDetailsService userDetailsService;
 
-	
 	@PostMapping(value = "/login")
+	@HystrixCommand(fallbackMethod = "fallbackLogin")
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest)
 			throws Exception {
+
 		HttpHeaders responseHeaders = new HttpHeaders();
 
 		Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
@@ -46,7 +48,7 @@ public class JwtAuthenticationController {
 
 		final CustomUserDetails userDetails = (CustomUserDetails) userDetailsService
 				.loadUserByUsername(authenticationRequest.getUsername());
-		
+
 		final String jwt = jwtTokenUtil.generateToken(userDetails);
 		AuthenticationResponse response = new AuthenticationResponse(jwt);
 
@@ -58,6 +60,11 @@ public class JwtAuthenticationController {
 
 		return new ResponseEntity<>(response, responseHeaders, HttpStatus.OK);
 
+	}
+
+	public ResponseEntity<?> fallbackLogin(@RequestBody AuthenticationRequest authenticationRequest) {
+		return ResponseEntity.ok("Not able to authenticate user:" + authenticationRequest.getUsername()
+				+ ". Technical issue occured, please try again later.");
 	}
 
 }
