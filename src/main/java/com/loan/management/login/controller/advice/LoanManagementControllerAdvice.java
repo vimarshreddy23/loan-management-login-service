@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class LoanManagementControllerAdvice {
 
 	@ExceptionHandler(RuntimeException.class)
-	public ResponseEntity<?> handleException(HttpServletRequest request, Exception ex) {
+	public ResponseEntity<String> handleException(HttpServletRequest request, Exception ex) {
 		return new ResponseEntity<>("Exception Occured", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }
