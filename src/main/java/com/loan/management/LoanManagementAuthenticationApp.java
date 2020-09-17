@@ -15,7 +15,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class LoanManagementAuthenticationApp {
 	public static void main(String[] args) {
 		SpringApplication.run(LoanManagementAuthenticationApp.class, args);
-		//log.info("Authentication service is up ....");
 	}
 	
 	@Bean

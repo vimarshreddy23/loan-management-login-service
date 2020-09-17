@@ -12,7 +12,6 @@ public class LoanManagementControllerAdvice {
 
 	@ExceptionHandler(RuntimeException.class)
 	public ResponseEntity<?> handleException(HttpServletRequest request, Exception ex) {
-		//log.info("Exception Occured", ex.getMessage());
 		return new ResponseEntity<>("Exception Occured", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }

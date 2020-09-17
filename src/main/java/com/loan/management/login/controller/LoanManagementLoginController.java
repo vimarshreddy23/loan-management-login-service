@@ -17,7 +17,6 @@ public class LoanManagementLoginController {
 
 	@GetMapping("/hello")
 	public ResponseEntity<?> sayHello() {
-		// log.info("saying hello");
 		return ResponseEntity.ok().body("Welome");
 	}
 

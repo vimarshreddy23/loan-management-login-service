@@ -54,7 +54,7 @@ public class JwtAuthenticationController {
 
 		response.setId(userDetails.getId());
 		response.setUsername(userDetails.getUsername());
-		List<String> roles = new ArrayList<String>();
+		List<String> roles = new ArrayList<>();
 		userDetails.getAuthorities().forEach((a) -> roles.add(a.getAuthority()));
 		response.setRoles(roles);
 
