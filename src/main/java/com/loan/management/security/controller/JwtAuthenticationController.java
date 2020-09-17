@@ -23,8 +23,7 @@ import com.loan.management.security.service.JPAUserDetailsService;
 import com.loan.management.security.util.JwtUtil;
 
 @RestController
-@CrossOrigin
-//@RequestMapping("/loan-management") 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class JwtAuthenticationController {
 
 	@Autowired
@@ -36,8 +35,8 @@ public class JwtAuthenticationController {
 	@Autowired
 	private JPAUserDetailsService userDetailsService;
 
+	
 	@PostMapping(value = "/login")
-
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest)
 			throws Exception {
 		HttpHeaders responseHeaders = new HttpHeaders();

@@ -7,15 +7,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 @RestControllerAdvice(basePackages = {"com.*"})
 public class LoanManagementControllerAdvice {
 
 	@ExceptionHandler(RuntimeException.class)
 	public ResponseEntity<?> handleException(HttpServletRequest request, Exception ex) {
-		log.info("Exception Occured", ex.getMessage());
+		//log.info("Exception Occured", ex.getMessage());
 		return new ResponseEntity<>("Exception Occured", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }
