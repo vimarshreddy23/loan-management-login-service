@@ -23,7 +23,7 @@ import com.loan.management.security.util.JwtUtil;
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 
-	Logger logger = LoggerFactory.getLogger(JwtRequestFilter.class);
+	Logger log = LoggerFactory.getLogger(JwtRequestFilter.class);
 	
     @Autowired
     private JPAUserDetailsService userDetailsService;
@@ -45,7 +45,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             username = jwtUtil.extractUsername(jwt);
         }
 
-        logger.debug("username::"+username);
+        log.debug("username::"+username);
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
         	logger.debug("Auth is null ***************");
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
