@@ -52,9 +52,6 @@ public class UserDetailsEntity {
 	@Column(name = "user_email")
 	private String userEmail;
 	
-	/*
-	 * @Transient private String userPassword;
-	 */
 
 	@Column(name = "user_password")
 	private String userPassword;
