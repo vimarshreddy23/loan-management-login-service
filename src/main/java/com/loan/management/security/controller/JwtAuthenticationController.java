@@ -38,7 +38,7 @@ public class JwtAuthenticationController {
 
 	@PostMapping(value = "/login")
 	@HystrixCommand(fallbackMethod = "fallbackLogin")
-	public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest)
+	public ResponseEntity createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest)
 			throws Exception {
 
 		HttpHeaders responseHeaders = new HttpHeaders();
@@ -62,9 +62,9 @@ public class JwtAuthenticationController {
 
 	}
 
-	public ResponseEntity<?> fallbackLogin(@RequestBody AuthenticationRequest authenticationRequest) {
+	public ResponseEntity fallbackLogin(@RequestBody AuthenticationRequest authenticationRequest) {
 		return ResponseEntity.ok("Not able to authenticate user:" + authenticationRequest.getUsername()
-				+ ". Technical issue occured, please try again later.");
+				+ ". Please contact Admin.");
 	}
 
 }
