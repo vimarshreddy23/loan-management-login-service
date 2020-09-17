@@ -7,9 +7,9 @@
 	<groupId>com.loan.management.login</groupId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
-	<artifactId>LoanManagementAppLoginService</artifactId>
+	<artifactId>loan-management-login-service</artifactId>
 
-	<name>LoanManagementAppLoginService</name>
+	<name>loan-management-login-service</name>
 	<description>Rest API for a Loan Management App Login Service</description>
 
 	<parent>
@@ -22,7 +22,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Hoxton.SR8</spring-cloud.version>
-		<sonar.projectKey>vimarshreddy23_loan-management-login-service</sonar.projectKey>
+		<sonar.projectKey>loan-management-login-service</sonar.projectKey>
 		<sonar.organization>vimarshreddy23</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<sonar.login>c6a3ee95d81f22a2c0c020702f812227bf6d458b</sonar.login>
