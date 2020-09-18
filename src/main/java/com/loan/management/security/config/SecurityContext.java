@@ -21,9 +21,7 @@ public class SecurityContext extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private JwtRequestFilter jwtRequestFilter;
-	/*
-	 * @Autowired CorsConfigurationSource CorsConfiguration;
-	 */
+	
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
